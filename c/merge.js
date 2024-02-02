@@ -13,26 +13,20 @@ const rl = readline.createInterface({
 
 // get filepath for global index
 const indexFilepath = process.argv[2];
-let init = false;
 // index to merge
 let toMerge = new Map();
 
 // read the contents of the file into index as a array of each line
-const readIndex = () => {
-  fs.readFile(indexFilepath, "utf-8", (err, data) => {
-    if (err) {
-      console.error("Error reading file: ${err.message}");
-      exit();
-    }
-    initIndex(data);
-  });
-  init = true;
-};
+fs.readFile(indexFilepath, "utf-8", (err, data) => {
+  if (err) {
+    console.error("Error reading file: ${err.message}");
+    exit();
+  }
+  initIndex(data);
+  console.log(toMerge);
+});
 
 rl.on("line", (line) => {
-  if (!init) {
-    readIndex();
-  }
   if (!line) {
     return;
   }
@@ -60,7 +54,7 @@ rl.on("line", (line) => {
 });
 
 rl.on("close", () => {
-  // console.log(toMerge);
+  console.log(toMerge);
   mergeIndices();
 });
 
