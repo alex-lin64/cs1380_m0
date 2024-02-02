@@ -24,5 +24,5 @@ rl.on("close", () => {
     baseElements: { selectors: ["body"] },
   });
   var reg = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-  trimmed = console.log(text.replace(reg, ""));
+  console.log(text.replace(reg, ""));
 });
