@@ -15,6 +15,9 @@ const rl = readline.createInterface({
 const indexFilepath = process.argv[2];
 // index to merge
 let toMerge = new Map();
+// preserve original order when printing
+let incomingOrder = [];
+let globalIndexOrder = [];
 
 rl.on("line", (line) => {
   if (!line) {
@@ -25,6 +28,9 @@ rl.on("line", (line) => {
   const key = item[0];
   const cnt = parseInt(item[1]);
   const url = item[2];
+
+  // append to end of list
+  incomingOrder.push(key);
 
   counts = new Map();
   counts.set([url], cnt);
@@ -62,8 +68,12 @@ const processFile = async () => {
 const printIndices = () => {
   // output the merged hashmap
   var merged = "";
-  // get sorted keys array
-  const keys = Array.from(toMerge.keys()).sort();
+  // merge two orders, with precendent being for global-index, and any non-duplicates
+  // in the incoming order being appended to end of the gloabl-index order
+  const filIncomingOrder = incomingOrder.filter(
+    (x) => !globalIndexOrder.includes(x)
+  );
+  const keys = globalIndexOrder.concat(filIncomingOrder);
 
   keys.forEach((key) => {
     const counts = toMerge.get(key);
@@ -80,7 +90,7 @@ const printIndices = () => {
     // end line with new line
     merged += "\n";
   });
-  console.log(merged);
+  console.log(merged.trim());
 };
 
 const mergePrev = (data) => {
@@ -96,6 +106,9 @@ const mergePrev = (data) => {
     }
     const [key, valString] = line.split(" | ");
     const vals = valString.split(" ");
+
+    // to maintain order (dumb)
+    globalIndexOrder.push(key);
 
     // adds to map url -> count
     for (let i = 0; i < vals.length; i += 2) {
