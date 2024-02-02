@@ -16,16 +16,6 @@ const indexFilepath = process.argv[2];
 // index to merge
 let toMerge = new Map();
 
-// read the contents of the file into index as a array of each line
-fs.readFile(indexFilepath, "utf-8", (err, data) => {
-  if (err) {
-    console.error("Error reading file: ${err.message}");
-    exit();
-  }
-  initIndex(data);
-  console.log(toMerge);
-});
-
 rl.on("line", (line) => {
   if (!line) {
     return;
@@ -35,30 +25,41 @@ rl.on("line", (line) => {
   const key = item[0];
   const cnt = parseInt(item[1]);
   const url = item[2];
-  // if key in toMerge
-  if (toMerge.get(key)) {
-    // if url already exists, increment count
-    const existingVal = toMerge.get(key);
-    if (url in existingVal) {
-      existingVal[url] += cnt;
-    } else {
-      // else set count to incoming cnt
-      existingVal[url] = cnt;
-    }
-  } else {
-    // else, set new key
-    counts = new Map();
-    counts.set([url], cnt);
-    toMerge.set(key, counts);
+
+  counts = new Map();
+  counts.set([url], cnt);
+  toMerge.set(key, counts);
+});
+
+rl.on("close", async () => {
+  // console.log(toMerge);
+
+  await processFile();
+
+  // console.log(toMerge);
+  printIndices();
+});
+
+const processFile = async () => {
+  // read the contents of the file into index as a array of each line
+  try {
+    const data = await new Promise((resolve, reject) => {
+      fs.readFile(indexFilepath, "utf-8", (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      });
+    });
+    mergePrev(data);
+  } catch (err) {
+    console.error(`Error reading file: ${err.message}`);
+    exit();
   }
-});
+};
 
-rl.on("close", () => {
-  console.log(toMerge);
-  mergeIndices();
-});
-
-const mergeIndices = () => {
+const printIndices = () => {
   // output the merged hashmap
   var merged = "";
   // get sorted keys array
@@ -82,7 +83,8 @@ const mergeIndices = () => {
   console.log(merged);
 };
 
-const initIndex = (data) => {
+const mergePrev = (data) => {
+  // merge previous gloabl index with incoming index
   if (!data) {
     return;
   }
@@ -92,16 +94,30 @@ const initIndex = (data) => {
     if (!line) {
       return;
     }
-    const item = line.split(" | ");
-    const vals = item[1].split(" ");
-    const counts = new Map();
+    const [key, valString] = line.split(" | ");
+    const vals = valString.split(" ");
+
     // adds to map url -> count
     for (let i = 0; i < vals.length; i += 2) {
       const url = vals[i];
       const cnt = parseInt(vals[i + 1]);
-      counts.set([url], cnt);
+
+      // if key in toMerge
+      if (toMerge.get(key)) {
+        // if url already exists, increment count
+        const existingVal = toMerge.get(key);
+        if (url in existingVal) {
+          existingVal.set(url, existingVal.get(url) + cnt);
+        } else {
+          // else set count to incoming cnt
+          existingVal.set(url, cnt);
+        }
+      } else {
+        // else, set new key
+        const counts = new Map();
+        counts.set([url], cnt);
+        toMerge.set(key, counts);
+      }
     }
-    // add each word to map of url -> counts
-    toMerge.set(item[0], counts);
   });
 };
