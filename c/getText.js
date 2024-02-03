@@ -23,6 +23,6 @@ rl.on("close", () => {
     wordwrap: 130,
     baseElements: { selectors: ["body"] },
   });
-  var reg = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+  var reg = /^\s+|\s+$/g;
   console.log(text.replace(reg, ""));
 });

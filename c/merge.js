@@ -119,12 +119,7 @@ const mergePrev = (data) => {
       if (toMerge.get(key)) {
         // if url already exists, increment count
         const existingVal = toMerge.get(key);
-        if (url in existingVal) {
-          existingVal.set(url, existingVal.get(url) + cnt);
-        } else {
-          // else set count to incoming cnt
-          existingVal.set(url, cnt);
-        }
+        existingVal.set(url, (existingVal.get(url) || 0) + cnt);
       } else {
         // else, set new key
         const counts = new Map();

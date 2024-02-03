@@ -1,24 +1,24 @@
 # M0: Setup & Centralized Computing
 
-> Full name: `<first last>`
-> Email: `<email@brown.edu>`
-> Username: `cslogin`
+> Full name: Alex Lin
+> Email: alex_lin@brown.edu
+> Username: alin90
 
 ## Summary
 
 > Summarize your implementation, including key challenges you encountered
 
-My implementation comprises `<number>` software components, totaling `<number>` lines of code in the following languages: `<number>` lines of shell scripts and `<number>` of JavaScript code. Key challenges included `<3 challenges and how you managed to overcome them>`.
+My implementation comprises 9 software components, totaling `<number>` lines of code in the following languages: `<number>` lines of shell scripts and `<number>` of JavaScript code. Key challenges included `<3 challenges and how you managed to overcome them>`.
 
 ## Correctness & Performance Characterization
 
 > Describe how you characterized the correctness and performance of your implementation
 
-_Correctness_: My implementation passes `<number>` out of the `<number>` tests (`<percentage>`%) already provided for M0.
+_Correctness_: My implementation passes 9 out of the 9 tests (100%) already provided for M0.
 
 I developed another `<number>` tests, which focus on
 
-- crawl.sh
+-
 
 All these tests, combined take `<time>` to complete. `<additional approaches for increasing correctness confidence>`.
 
@@ -34,7 +34,7 @@ _Performance_: Evaluating the entire system using the `time` command on the thre
 
 > Roughly, how many hours did this milestone take you to complete?
 
-Hours: `<time>`
+Hours: 15
 
 ## Wild Guess
 
