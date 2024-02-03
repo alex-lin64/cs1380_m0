@@ -3,7 +3,6 @@
 const readline = require("readline");
 const { JSDOM } = require("jsdom");
 const { URL } = require("url");
-const { format } = require("path");
 
 // Example usage:
 const inputURL = new URL(process.argv[2]);
@@ -38,5 +37,8 @@ rl.on("line", (line) => {
 
 rl.on("close", () => {
   // TODO some code
+  if (extractedUrls.length == 0) {
+    return;
+  }
   console.log(extractedUrls.join("\n"));
 });

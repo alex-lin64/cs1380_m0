@@ -4,5 +4,12 @@
 # along  with appropriate stemming of the input strings and stripping of the 
 # index metadata
 
-echo "$@" | cat
+search=""
+
+for arg in "$@"; do
+  stemmed=$(echo "$arg" | ./c/stem.js)
+  search+="$stemmed "
+done
+
+grep -i "$search" "d/global-index.txt"
 
