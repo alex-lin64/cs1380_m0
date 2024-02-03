@@ -1,19 +1,18 @@
-check | https://cs.brown.edu/courses/csci1380/sandbox/1 3 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2
-check stuff | https://cs.brown.edu/courses/csci1380/sandbox/1 3 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2
-check stuff level | https://cs.brown.edu/courses/csci1380/sandbox/1 3 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2
-level | https://cs.brown.edu/courses/csci1380/sandbox/1 3 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2
-level check | https://cs.brown.edu/courses/csci1380/sandbox/1 2 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1
-level check stuff | https://cs.brown.edu/courses/csci1380/sandbox/1 2 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1
-level right | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2 https://cs.brown.edu/courses/csci1380/sandbox/1 2
-link | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-link check | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-link check stuff | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-right | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 3 https://cs.brown.edu/courses/csci1380/sandbox/1 3
-simpl | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-simpl link | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-simpl link check | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-stuff | https://cs.brown.edu/courses/csci1380/sandbox/1 3 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2
-stuff level | https://cs.brown.edu/courses/csci1380/sandbox/1 3 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 2
-stuff level check | https://cs.brown.edu/courses/csci1380/sandbox/1 2 https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1
-stuff level right | https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html 1 https://cs.brown.edu/courses/csci1380/sandbox/1 1
-
+check|2|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+checkstuff|2|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+checkstufflevel|2|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+level|2|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+levelcheck|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+levelcheckstuff|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+levelright|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+link|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+linkcheck|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+linkcheckstuff|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+right|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+simpl|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+simpllink|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+simpllinkcheck|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+stuff|2|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+stufflevel|2|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+stufflevelcheck|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
+stufflevelright|1|https://cs.brown.edu/courses/csci1380/sandbox/1/level_1a/index.html
