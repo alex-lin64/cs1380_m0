@@ -9,6 +9,9 @@ const inputURL = new URL(process.argv[2]);
 if (inputURL.pathname.endsWith("/index.html")) {
   inputURL.pathname = inputURL.pathname.slice(0, -"/index.html".length);
 }
+if (inputURL.pathname.endsWith("/")) {
+  inputURL.pathname = inputURL.pathname.slice(0, -"/".length);
+}
 const baseURL = inputURL.toString() + "/";
 
 const rl = readline.createInterface({

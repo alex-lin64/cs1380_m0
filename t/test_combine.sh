@@ -9,7 +9,9 @@ DIFF=${DIFF:-diff}
 # output_file="$T_FOLDER/output.txt"
 # touch "$output_file"
 
-# cat "$T_FOLDER"/d/d4.txt | c/combine.sh | sed 's/\t*$//' | sed 's/\s/ /g' | sort | uniq > "$output_file"
+# cat "$T_FOLDER"/d/d4.txt | c/combine.sh > "$output_file"
+# cat "$T_FOLDER"/d/d5.txt | sed 's/\t*$//' | sed 's/\s/ /g' | sort | uniq > "$T_FOLDER/output2.txt"
+
 
 # if $DIFF "$output_file" <(sort "$T_FOLDER"/d/d2.txt) > /dev/null;
 

@@ -10,6 +10,10 @@ while read -r url; do
     break;
   fi
 
+  if grep -qxF "$1" d/visited.txt; then
+    continue
+  fi
+
   ./crawl.sh "$url" >d/content.txt
   ./index.sh d/content.txt "$url"
 
