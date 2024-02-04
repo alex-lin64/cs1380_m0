@@ -9,7 +9,7 @@ DIFF=${DIFF:-diff}
 
 output_file="$T_FOLDER/output.txt"
 
-cat "$T_FOLDER"/d/m2.txt | c/merge.js d/m1_gi.txt > "$T_FOLDER/output.txt"
+cat "$T_FOLDER"/d/m2.txt | c/merge.js d/m1_gi.txt > "$output_file"
 
 if $DIFF <(cat d/test_merge1.txt) <(cat "$T_FOLDER"/output.txt) > /dev/null;
 then

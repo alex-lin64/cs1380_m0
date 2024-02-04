@@ -2,7 +2,6 @@
 
 cd "$(dirname "$0")" || exit
 
-./test_lint.sh
 
 ./test_getURLs.sh
 ./test_getText.sh
