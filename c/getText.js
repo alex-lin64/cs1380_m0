@@ -14,7 +14,7 @@ let extractedText = "";
 
 rl.on("line", (line) => {
   // TODO Add some code
-  extractedText = extractedText + line;
+  extractedText += "\n" + line;
 });
 
 rl.on("close", () => {
