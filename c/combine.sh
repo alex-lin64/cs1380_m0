@@ -7,57 +7,50 @@ first=""
 second=""
 third=""
 
-# Function to process 3 words
-process_words() {
-    if [ -n "$first" ]; then
-        echo "$first"
-    fi
-    if [ -n "$second" ]; then
-        echo "$first $second"
-    fi
-    if [ -n "$third" ]; then
-        echo "$first $second $third"
-    fi
 
-    # Move words to their respective positions
-    first="$second"
-    second="$third"
-    third=""
-}
-
-process_words_shortage() {
-    if [ -n "$first" ]; then
-        echo "$first"
-    fi
-    if [ -n "$second" ]; then
-        echo "$first $second"
-        echo "$second"
-    fi
-    if [ -n "$third" ]; then
-        echo "$first $second $third"
-        echo "$second $third"
-        echo "$third"
-    fi
-}
-
-# Main loop
 while read -r word; do
-    # Check if variables are filled
+    # check if variables are filled
     if [[ -z "$first" ]]; then
-        first=$(echo "$word" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+        first="${word#"${word%%[![:space:]]*}"}"
     elif [[ -z "$second" ]]; then
-        second=$(echo "$word" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+        second="${word#"${word%%[![:space:]]*}"}"
     elif [[ -z "$third" ]]; then
-        third=$(echo "$word" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-        process_words
+        third="${word#"${word%%[![:space:]]*}"}"
+
+        # process 3 words without using function calls
+        if [ -n "$first" ]; then
+            echo "$first"
+        fi
+        if [ -n "$second" ]; then
+            echo "$first $second"
+        fi
+        if [ -n "$third" ]; then
+            echo "$first $second $third"
+        fi
+
+        first="$second"
+        second="$third"
+        third=""
     fi
 done
 
-process_words_shortage
+# process remaining words without using function calls
+if [ -n "$first" ]; then
+    echo "$first"
+fi
+if [ -n "$second" ]; then
+    echo "$first $second"
+    echo "$second"
+fi
+if [ -n "$third" ]; then
+    echo "$first $second $third"
+    echo "$second $third"
+    echo "$third"
+fi
 
 
 
-# # Read words from the input stream
+# Read words from the input stream
 # while read -r word; do
 #     words+=("$word")
 # done
@@ -72,7 +65,7 @@ process_words_shortage
 #         for ((j = 0; j < n; j++)); do
 #             ngram+=" ${words[i + j]}"
 #         done
-#         echo $(echo "$ngram" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+#         echo echo "$ngram"
 
 #     done
 # }
